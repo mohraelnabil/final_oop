@@ -1,4 +1,5 @@
-package library_manegment_system;
+package library;
+
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +14,7 @@ public class Main {
 
 		
 // menu 
-		
+
 		int num ;
 		// do {
 			System.out.println("0. Exit\n" + "1. Login\n2. New User ");
@@ -21,8 +22,8 @@ public class Main {
 			num = s.nextInt();
 			
 			switch (num) {
-			case 1 : login() ;
-			case 2 : newuser();
+			case 1 : login() ; break;
+			case 2 : newuser(); break; 
 		 }
 		// }while (num != 0);
 		
@@ -70,5 +71,3 @@ public class Main {
 	
 
 }
-
-
