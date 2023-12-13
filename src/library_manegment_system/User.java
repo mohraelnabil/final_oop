@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 public abstract class User {
 
@@ -35,8 +35,9 @@ public abstract class User {
 			return phonenumber ;
 		}
 		
+		abstract public String toString() ;
+		
 		abstract public void menu(Database database, User user);
 
 
 }
-
