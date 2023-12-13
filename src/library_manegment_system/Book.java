@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 public class Book {
 	private String name;    //title
@@ -25,13 +25,13 @@ public class Book {
 	}
 	
 	public String toString(){
-		String text = "Book Name: " + name +
-				"Book Author: " + author +
-				"Book Publisher: " + publisher +
-				"Book Collection Adress: " + adress +
-				"Book Status: " + status +
-				"Qty: " +String.valueOf(qty) +
-				"Book Price: " + String.valueOf(price) +
+		String text = "Book Name: " + name +"\n"+
+				"Book Author: " + author +"\n"+
+				"Book Publisher: " + publisher +"\n"+
+				"Book Collection Adress: " + adress +"\n"+
+				"Book Status: " + status +"\n"+
+				"Qty: " +String.valueOf(qty) +"\n"+
+				"Book Price: " + String.valueOf(price) +"\n"+
 				"Borrowing Copies: " + String.valueOf(brwcopies) ;
 			return text ;
 	}
@@ -85,5 +85,12 @@ public class Book {
 		this.brwcopies = brwcopies;
 	}
 	
+	public String toString2() {
+		String text = name + "<N/>" + author +"<N/>" + publisher +"<N/>" + adress +"<N/>"+ status +"<N/>"+String.valueOf(qty) 
+		+"<N/>"+ String.valueOf(price) +"<N/>"+ String.valueOf(brwcopies) ;
+			return text ;
+	}
+	
+
 
 }
