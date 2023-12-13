@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 import java.util.Scanner;
 
@@ -44,9 +44,12 @@ public class NormalUser extends User {
 			
 			Scanner s = new Scanner(System.in);
 			int n = s.nextInt();
-			this.operations[n-1].oper(database, user);
+			this.operations[n-1].oper(database,user);
+			s.close();
+		}
+		
+		public String toString () {
+			return name + "<N/>" + email + "<N/>" + phonenumber + "<N/>" + "Normal" ;
 		}
 
 	}
-
-
