@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 public class DeleteBooks implements IOOperation{
 	@Override
