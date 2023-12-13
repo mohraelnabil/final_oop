@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 public class BorrowBook implements IOOperation{
 	@Override
