@@ -37,6 +37,7 @@ public class Database {
 
 		}
 		getUsers();
+		getBooks();
 	} 
 	
 	public void AddUser(User s) {
@@ -171,5 +172,30 @@ public class Database {
 		book.setBrwcopies(Integer.parseInt(a[6]));
 		return book ;
 	}
+	
+	public ArrayList<Book> getAllBooks(){
+		return Books;
+	}
+	
+	public int getBook(String bookname) {
+		
+		int i=-1;
+		for(Book book : Books) {
+			if(book.getName().matches(bookname));
+			i=Books.indexOf(book);
+		}
+		return i;
+	  }
+	
+	public Book getBook(int i) {
+		
+		return Books.get(i);
+	  }
+	
+		public void deleteBook(int i) {
+			Books.remove(i);
+			booknames.remove(i);
+			saveBooks();
+		}
 	
 }
