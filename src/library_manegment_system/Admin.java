@@ -9,11 +9,11 @@ public class Admin extends User {
 	
 	this.operations = new IOOperation[] {
 			new ViewBooks(),
-			new AddBook(),
+			new AddBooks(),
 			new DeleteBooks(),
 			new Search(),
-			new Deletealldata(),
-			new viewOrders(),
+			//new Deletealldata(),
+			//new viewOrders(),
 			new Exit()
 	};
 	}
@@ -25,8 +25,8 @@ public class Admin extends User {
 				new AddBooks(),
 				new DeleteBooks(),
 				new Search(),
-				new Deletealldata(),
-				new viewOrders(),
+				//new Deletealldata(),
+				//new viewOrders(),
 				new Exit()
 		};
 	}
@@ -37,9 +37,9 @@ public class Admin extends User {
 		System.out.println ("2. Add Books");
 		System.out.println ("3. Delete Books");
 		System.out.println ("4. Search");
-		System.out.println ("5. Delete all data");
-		System.out.println ("6. view Orders");
-		System.out.println ("7. Exit");
+		//System.out.println ("5. Delete all data");
+		//System.out.println ("6. view Orders");
+		System.out.println ("5. Exit");
 		
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
