@@ -9,10 +9,10 @@ public class NormalUser extends User {
 			this.operations = new IOOperation[] {
 					new ViewBooks(),
 					new Search(),
-					new PlaceOrders(),
-					new BorrowBook(),
-					new CalculateFine(),
-					new ReturnBook(),
+					//new PlaceOrders(),
+					//new BorrowBook(),
+					//new CalculateFine(),
+					//new ReturnBook(),
 					new Exit()
 					
 			};
@@ -23,10 +23,10 @@ public class NormalUser extends User {
 			this.operations = new IOOperation[] {
 					new ViewBooks(),
 					new Search(),
-					new PlaceOrders(),
-					new BorrowBook(),
-					new CalculateFine(),
-					new ReturnBook(),
+//					new PlaceOrders(),
+//					new BorrowBook(),
+//					new CalculateFine(),
+//					new ReturnBook(),
 					new Exit()
 					
 			};
@@ -36,11 +36,11 @@ public class NormalUser extends User {
 		public void menu(Database database, User user) {
 			System.out.println ("1. view Books");
 			System.out.println ("2. Search");
-			System.out.println ("3. place Orders");
-			System.out.println ("4. Borrow Book ");
-			System.out.println ("5. calculate Fine");
-			System.out.println ("6. Return Book");
-			System.out.println ("7. Exit");
+			//System.out.println ("3. place Orders");
+			//System.out.println ("4. Borrow Book ");
+			//System.out.println ("5. calculate Fine");
+			//System.out.println ("6. Return Book");
+			System.out.println ("3. Exit");
 			
 			Scanner s = new Scanner(System.in);
 			int n = s.nextInt();
