@@ -1,4 +1,4 @@
-package library_manegment_system;
+package library;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class Exit implements IOOperation{
 				Scanner s = new Scanner(System.in);
 				int i = s.nextInt();
 				if (i==1) {
-					s.close();
+					System.out.println("Come again soon!");
 				}
 				else {
 					user.menu(database, user);
