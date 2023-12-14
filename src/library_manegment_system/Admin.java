@@ -9,7 +9,7 @@ public class Admin extends User {
 	
 	this.operations = new IOOperation[] {
 			new ViewBooks(),
-			new AddBooks(),
+			new AddBook(),
 			new DeleteBooks(),
 			new Search(),
 			new Deletealldata(),
