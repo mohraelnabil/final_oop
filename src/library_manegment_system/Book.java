@@ -8,11 +8,11 @@ public class Book {
 	private String status;     //borrowing  status
 	private int qty;           //copies for sale
 	private double price;
-	private int brwcopies;     //copies for borrowing
+
 	
 	
 	public Book() {};
-	public Book(String name, String author, String publisher, String adress, String status, int qty, double price, int brwcopies ) {
+	public Book(String name, String author, String publisher, String adress, String status, int qty, double price ) {
 		this.name = name;
 		this.author = author;
 		this.publisher = publisher;
@@ -20,7 +20,7 @@ public class Book {
 		this.status = status;
 		this.qty = qty;
 		this.price = price;
-		this.brwcopies = brwcopies;
+
 		
 	}
 	
@@ -31,8 +31,7 @@ public class Book {
 				"Book Collection Adress: " + adress +"\n"+
 				"Book Status: " + status +"\n"+
 				"Qty: " +String.valueOf(qty) +"\n"+
-				"Book Price: " + String.valueOf(price) +"\n"+
-				"Borrowing Copies: " + String.valueOf(brwcopies) ;
+				"Book Price: " + String.valueOf(price) +"\n" ;
 			return text ;
 	}
 	
@@ -78,16 +77,11 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getBrwcopies() {
-		return brwcopies;
-	}
-	public void setBrwcopies(int brwcopies) {
-		this.brwcopies = brwcopies;
-	}
+
 	
 	public String toString2() {
 		String text = name + "<N/>" + author +"<N/>" + publisher +"<N/>" + adress +"<N/>"+ status +"<N/>"+String.valueOf(qty) 
-		+"<N/>"+ String.valueOf(price) +"<N/>"+ String.valueOf(brwcopies) ;
+		+"<N/>"+ String.valueOf(price) +"<N/>" ;
 			return text ;
 	}
 	
