@@ -15,6 +15,7 @@ public class Main {
 		
 // menu 
 
+
 		int num ;
 		// do {
 			System.out.println("0. Exit\n" + "1. Login\n2. New User ");
@@ -22,6 +23,7 @@ public class Main {
 			num = s.nextInt();
 			
 			switch (num) {
+			case 0 : System.out.println("Come aqain soon!");break ;
 			case 1 : login() ; break;
 			case 2 : newuser(); break; 
 		 }
