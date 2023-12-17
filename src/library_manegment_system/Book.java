@@ -1,11 +1,12 @@
 package library;
 
+// Mohra
+
 public class Book {
 	private String name;    //title
 	private String author;    
 	private String publisher;   
 	private String adress;     //collection location
-	private String status;     //borrowing  status
 	private int qty;           //copies for sale
 	private double price;
 
@@ -17,7 +18,6 @@ public class Book {
 		this.author = author;
 		this.publisher = publisher;
 		this.adress = adress;
-		this.status = status;
 		this.qty = qty;
 		this.price = price;
 
@@ -29,7 +29,6 @@ public class Book {
 				"Book Author: " + author +"\n"+
 				"Book Publisher: " + publisher +"\n"+
 				"Book Collection Adress: " + adress +"\n"+
-				"Book Status: " + status +"\n"+
 				"Qty: " +String.valueOf(qty) +"\n"+
 				"Book Price: " + String.valueOf(price) +"\n" ;
 			return text ;
@@ -59,12 +58,6 @@ public class Book {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	public int getQty() {
 		return qty;
 	}
@@ -80,8 +73,8 @@ public class Book {
 
 	
 	public String toString2() {
-		String text = name + "<N/>" + author +"<N/>" + publisher +"<N/>" + adress +"<N/>"+ status +"<N/>"+String.valueOf(qty) 
-		+"<N/>"+ String.valueOf(price) +"<N/>" ;
+		String text = name +"\t\t" + author +"\t\t" + publisher +"\t\t"+ adress +"\t\t"+String.valueOf(qty) 
+		+"\t\t"+ String.valueOf(price) ;
 			return text ;
 	}
 	
