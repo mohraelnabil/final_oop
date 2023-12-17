@@ -33,20 +33,28 @@ public class Main {
 
 // login 
 	
+
 	private static void login() {
-		System.out.println("Enter phone number: ");
-		String phonenumber = s.next();
-		System.out.println("Enter email: ");
-		String email = s.next();
-		int n = database.login(phonenumber , email) ;
-		if (n != -1) {
-			User user = database.getUser(n);
-			user.menu(database, user);
-			System.out.println("Welcome "+ user.getName());
-		}
-		else {
-			System.out.println ("User doesn't exist!");
-		}
+	    System.out.println("Enter phone number: ");
+	    String phoneNumber = s.next();
+	    System.out.println("Enter email: ");
+	    String email = s.next();
+	    
+	    int userId = database.login(phoneNumber, email);
+	    if (userId != -1) {
+	        User user = database.getUser(userId);
+	        
+	        // Check if the user is an admin
+	        if (user instanceof Admin) {
+	            System.out.println("Welcome " + user.getName() + " (Admin)!");
+	            user.menu(database, user);
+	        } else {
+	            System.out.println("Welcome " + user.getName() + " (Normal User)!");
+	            user.menu(database, user);
+	        }
+	    } else {
+	        System.out.println("User doesn't exist!");
+	    }
 	}
 
 // newuser 
@@ -60,15 +68,20 @@ public class Main {
 		String email = s.next();
 		System.out.println("1. Admin\n2. Normal User");
 		int n2 = s.nextInt() ;
-		User user ;
-		if (n2 == 1) {
-			user = new Admin ( name , email , phonenumber);
+		
+		User user;
+
+		switch (n2) {
+		    case 1:
+		        user = new Admin(name, email, phonenumber);
+		        break;
+		    default:
+		        user = new NormalUser(name, email, phonenumber);
+		        break;
 		}
-		else {
-			user = new NormalUser ( name , email , phonenumber);
-		}
+
 		database.AddUser(user);
-		user.menu(database , user);
+		user.menu(database, user);
 	}
 	
 
