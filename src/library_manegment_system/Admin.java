@@ -1,19 +1,19 @@
 package library;
 
+// Farida
+
 import java.util.Scanner;
 
-public class Admin extends User {
+public class Admin extends User {  // inhirite from User 
 	
 	public Admin(String name) {
 		super(name);
 	
-	this.operations = new IOOperation[] {
+	this.operations = new IOOperation[] {  // Admin options 
 			new ViewBooks(),
 			new AddBooks(),
 			new DeleteBooks(),
 			new Search(),
-			//new Deletealldata(),
-			//new viewOrders(),
 			new Exit()
 	};
 	}
@@ -25,11 +25,11 @@ public class Admin extends User {
 				new AddBooks(),
 				new DeleteBooks(),
 				new Search(),
-				//new Deletealldata(),
-				//new viewOrders(),
 				new Exit()
 		};
 	}
+	
+// menu of Admin option 
 	
 	@Override 
 	public void menu(Database database, User user) {
@@ -37,10 +37,9 @@ public class Admin extends User {
 		System.out.println ("2. Add Books");
 		System.out.println ("3. Delete Books");
 		System.out.println ("4. Search");
-		//System.out.println ("5. Delete all data");
-		//System.out.println ("6. view Orders");
 		System.out.println ("5. Exit");
 		
+		// scan the options 
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
 		this.operations[n-1].oper(database, user);
