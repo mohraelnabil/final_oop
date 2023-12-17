@@ -1,18 +1,16 @@
 package library;
 
+// Farida
+
 import java.util.Scanner;
 
-public class NormalUser extends User {
+public class NormalUser extends User { // inherite from user
 
 		public NormalUser(String name) {
 			super(name);
 			this.operations = new IOOperation[] {
 					new ViewBooks(),
 					new Search(),
-					//new PlaceOrders(),
-					//new BorrowBook(),
-					//new CalculateFine(),
-					//new ReturnBook(),
 					new Exit()
 					
 			};
@@ -23,10 +21,6 @@ public class NormalUser extends User {
 			this.operations = new IOOperation[] {
 					new ViewBooks(),
 					new Search(),
-//					new PlaceOrders(),
-//					new BorrowBook(),
-//					new CalculateFine(),
-//					new ReturnBook(),
 					new Exit()
 					
 			};
@@ -36,10 +30,6 @@ public class NormalUser extends User {
 		public void menu(Database database, User user) {
 			System.out.println ("1. view Books");
 			System.out.println ("2. Search");
-			//System.out.println ("3. place Orders");
-			//System.out.println ("4. Borrow Book ");
-			//System.out.println ("5. calculate Fine");
-			//System.out.println ("6. Return Book");
 			System.out.println ("3. Exit");
 			
 			Scanner s = new Scanner(System.in);
