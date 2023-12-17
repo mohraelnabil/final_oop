@@ -1,27 +1,35 @@
 package library;
 
+// Hana and Shahd
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Database {
 
+	// Array list to save UserName and BookName
+	
 	private ArrayList<User> users = new ArrayList<User>();
 	private ArrayList<String> usernames = new ArrayList<String>();
 	private ArrayList<Book> Books = new ArrayList<Book>();
 	private ArrayList<String> booknames = new ArrayList<String>();
 	
+	// Create File By it self 
 	private File usersfile = new File("D:\\Library\\Data\\Users");
 	private File Booksfile = new File("D:\\Library\\Data\\Books");
 	private File folder = new File("D:\\Library\\Data");
 	
 	public Database() {
 		
+		// check if the folder dosn't exist , he mkdirs() method is called on the folder object to create the directory
 		if (!folder.exists()) {
 			folder.mkdirs();
 		}
+		// create files
 		if (!usersfile.exists()) {
 			try {
 				usersfile.createNewFile();
@@ -38,6 +46,9 @@ public class Database {
 		}
 		getUsers();
 	} 
+	
+//**************
+//User
 	
 	public void AddUser(User s) {
 		users.add(s);
@@ -63,12 +74,6 @@ public class Database {
 	}
 	
 	
-	public void AddBook(Book book) {
-		Books.add(book);
-		booknames.add(book.getName());
-		saveBooks();
-	}
-	
 	private void getUsers() {
 		String text1 = "" ;
 		try {
@@ -82,7 +87,7 @@ public class Database {
 		catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+		// split is like determine that this is the end of the string (or line of data)
 		if (!text1.matches("") || !text1.isEmpty()) {
 			String[] a1 = text1.split("<NewUser/>");
 			for (String s : a1) {
@@ -106,97 +111,93 @@ public class Database {
 		}
 	}
 	
+	
+	// to add NewUser in the end to save it correctly
 	private void saveUsers() {
-		String text1 = "";
-		for(User user : users) {
-			text1 = text1 + users.toString() + "<NewUser/>" ; 
-		}
-		try {
-			PrintWriter pw = new PrintWriter (usersfile);
-			pw.print(text1);
-			pw.close();
-		}
-		catch (Exception e) {
-			System.err.println(e.toString());
-		}
+	    try {
+	        PrintWriter writer = new PrintWriter(usersfile);   // write data to the usersfile.
+
+	        for (User user : users) {
+	            // Write each user to the file with the <NewUser/> tag on a separate line
+	            writer.println(user.toString() + "<NewUser/>");
+	        }
+
+	        writer.close();
+	    } catch (Exception e) {
+	        System.err.println(e.toString()); // ( tostring ) -> return data into the File 
+	    }
 	}
 	
-	private void saveBooks () {
-		String text1 = "";
-		for(Book book : Books) {
-			text1 = text1 + book.toString2() + "<NewBook/>" ; 
-		}
-		try {
-			PrintWriter pw = new PrintWriter (Booksfile);
-			pw.print(text1);
-			pw.close();
-		}
-		catch (Exception e) {
-			System.err.println(e.toString());
-		}
+//******************
+// Book
+	
+	public void AddBook(Book book) {
+		Books.add(book);
+		booknames.add(book.getName());
+		saveBooks();
 	}
 	
-	private void getBooks() {
-		String text1 = "" ;
-		try {
-			BufferedReader br1 = new BufferedReader(new FileReader (Booksfile));
-			String s1 ;
-			while ((s1 = br1.readLine())!= null) {
-				text1 = text1 + s1 ;
-			}
-			br1.close();
-		}
-		catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		if (!text1.matches("") || !text1.isEmpty()) {
-			String[] a1 = text1.split("<NewbBook/>");
-			for (String s : a1) {
-				Book book = parseBook(s);
-				Books.add(book);
-				booknames.add(book.getName());
-			}
-		}
+	
+	public void saveBooks() {
+	    try {
+	        FileWriter fw = new FileWriter(Booksfile, true); // Append mode In append mode, if the file already exists,
+	        //the new data will be appended to the existing content of the file. If the file doesn't exist, a new file will be created.
+	        PrintWriter pw = new PrintWriter(fw);
+
+	        for (Book book : Books) {
+	            pw.println(book.toString2() + "<NewBook/>");
+	        }
+
+	        pw.close();
+	        fw.close();
+	    } catch (Exception e) {
+	        System.err.println(e.toString());
+	    }
 	}
 	
-	public Book parseBook (String s) {
-		String[] a = s.split("<N/>");
-		Book book = new Book();
-		book.setName(a[0]);
-		book.setAuthor(a[1]);
-		book.setAdress(a[3]);
-		book.setQty(Integer.parseInt(a[4]));
-		book.setPrice(Double.parseDouble(a[5]));
-		return book ;
-	}
-	
-	//******
+
 	
 	public ArrayList<Book> getAllBooks(){
 		return Books;
 	}
 	
-	public int getBook(String bookname) {
-		
-		int i=-1;
-		for(Book book : Books) {
-			if(book.getName().matches(bookname));
-			i=Books.indexOf(book);
-		}
-		return i;
-	  }
+// used in the class DeleteBooks to point to specific book
 	
+	public int getBook(String bookname) {
+	    int i = -1;
+	    for (Book book : Books) {
+	        if (book.getName().equals(bookname)) {
+	            i = Books.indexOf(book);
+	            break;
+	        }
+	    }
+	    return i;
+	  
+	}
+	//
 	public Book getBook(int i) {
 		
 		return Books.get(i);
 	  }
 	
-		public void deleteBook(int i) {
-			Books.remove(i);
-			booknames.remove(i);
-			saveBooks();
-		}
-	
+	public void deleteBook(String bookname) {
+	    int index = -1;
+	    for (int i = 0; i < Books.size(); i++) {
+	        Book book = Books.get(i);
+	        if (book.getName().equals(bookname)) {
+	            index = i;
+	            break;
+	        }
+	    }
+	    if (index != -1) {
+	        Books.remove(index);
+	        booknames.remove(index);
+	        saveBooks();
+	        System.out.println("Book deleted successfully!\n");
+	    } else {
+	        System.out.println("Book doesn't exist!\n");
+	    }
+	}
+
 	
 }
