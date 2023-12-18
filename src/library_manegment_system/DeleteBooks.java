@@ -10,7 +10,8 @@ public class DeleteBooks implements IOOperation{
 		System.out.println("Enter book name: ");
 		String bookname = s.next();
 
-
+String filePath = "D:\\Library\\Data\\Books";
+		
 		  try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) { // read data
             String line;
 		
