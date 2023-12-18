@@ -9,6 +9,10 @@ public class DeleteBooks implements IOOperation{
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter book name: ");
 		String bookname = s.next();
+
+
+		  try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) { // read data
+            String line;
 		
 		int i=database.getBook(bookname);
 		if(i>-1) {
