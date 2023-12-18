@@ -25,6 +25,7 @@ public class Book {
 		
 	}
 	//return format string included information of the book
+	//سلسله منسقه تحتوى على معلومات الكتاب
 	public String toString(){
 		String text = "Book Name: " + name +"\n"+
 				"Book Author: " + author +"\n"+
@@ -72,7 +73,7 @@ public class Book {
 		this.price = price;
 	}
 
-	
+	// عرض اكثر ايجازا مناسب للعرض بتنسيق جدولى
 	public String toString2() {
 		String text = name +"\t\t" + author +"\t\t" + publisher +"\t\t"+ adress +"\t\t"+String.valueOf(qty) 
 		+"\t\t"+ String.valueOf(price) ;
