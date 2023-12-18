@@ -3,6 +3,7 @@ package library;
 // Mohra
 
 public class Book {
+	//atributes
 	private String name;    //title
 	private String author;    
 	private String publisher;   
@@ -23,7 +24,7 @@ public class Book {
 
 		
 	}
-	
+	//return format string included information of the book
 	public String toString(){
 		String text = "Book Name: " + name +"\n"+
 				"Book Author: " + author +"\n"+
